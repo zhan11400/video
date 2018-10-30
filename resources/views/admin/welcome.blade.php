@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">pc</div>
+                <div class="title">admin</div>
             </div>
         </div>
     </body>

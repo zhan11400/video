@@ -16,6 +16,6 @@ class IndexController extends Base
      */
     public function index()
     {
-        die('PC首页');
+        return view('pc.welcome');
     }
 }
