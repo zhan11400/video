@@ -11,12 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    //return view('pc.welcome');
-});
+Route::get('/', 'Admin\LoginController@index');
 
 //后台地址
 Route::get('admin/login', 'Admin\LoginController@index');
+
+
+
 
 //PC首页
 Route::get('pc/index', 'Pc\IndexController@index');
