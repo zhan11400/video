@@ -3,6 +3,8 @@ namespace App\Http\Controllers\Pc;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Pc\BaseContrller as Base;
+use App\Admin;
+
 
 class IndexController extends Base
 {
@@ -14,7 +16,14 @@ class IndexController extends Base
      */
     public function index()
     {
-        var_dump($this->request);die;
-        echo 'Hello world!';
+        $member = new Admin;
+        $member = $member->text();
+        foreach ($member as $key => $value) {
+            echo $value->password;
+        }
+        die;
+        if(! $member->save()){
+            die('修改失败');
+        }
     }
 }

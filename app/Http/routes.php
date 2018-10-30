@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('pc.welcome');
 });
 
 Route::get('pc/index', 'Pc\IndexController@index');
