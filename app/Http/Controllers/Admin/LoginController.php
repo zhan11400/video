@@ -17,7 +17,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        die('后台登录页');
     }
 
     /**

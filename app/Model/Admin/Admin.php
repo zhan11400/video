@@ -12,4 +12,8 @@ class Admin extends Model
      * @var string
      */
     protected $table = 'admin';
+
+    public function find(){
+    	
+    }
 }
