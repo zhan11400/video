@@ -15,4 +15,9 @@ Route::get('/', function () {
     return view('pc.welcome');
 });
 
+//后台地址
+Route::get('admin/login', 'Admin\LoginController@index');
+
+
+//PC首页
 Route::get('pc/index', 'Pc\IndexController@index');
