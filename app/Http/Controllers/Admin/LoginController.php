@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Admin;
+use App\Http\Controllers\VerifyController;   //验证码类
 
 class LoginController extends Controller
 {
@@ -18,6 +18,11 @@ class LoginController extends Controller
     public function index()
     {
         return view('admin.login.index');
+    }
+
+    public function verify_login(){
+        $kit = new VerifyController();
+        var_dump($kit->check_verify('KLHQ2'));
     }
 
     /**
