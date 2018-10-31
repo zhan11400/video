@@ -13,8 +13,15 @@
 
 Route::get('/', 'Admin\LoginController@index');
 
+//验证码
+Route::get('verify/captcha', 'VerifyController@captcha');
+
 //后台地址
+// Route::match(['get', 'post'], '/', function () {
+//     return 'Hello World';
+// });
 Route::get('admin/login', 'Admin\LoginController@index');
+Route::post('/admin/verify_login', 'Admin\LoginController@verify_login');
 
 
 
