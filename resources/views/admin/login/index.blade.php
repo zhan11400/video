@@ -18,7 +18,7 @@
 </head>
 
 <body class="gray-bg">
-    <div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div class="middle-box text-center loginscreen  animated fadeInDown" style="padding-top: 200px">
         <div>
             <h3>欢迎使用</h3>
             <!-- <form class="m-t" role="form" action=""> -->
@@ -46,21 +46,25 @@
             }
         });
 
+        //全局样式
+        layer.config({
+            skin: 'layui-layer-molv'//自定义样式demo-class
+        })
+
         function ajax_post(){
             var account = $("input[name='account']").val();
             var password = $("input[name='password']").val();
             var code = $("input[name='code']").val();
 
             $.post("/admin/verify_login",{account:account,passwd:password,code:code},function(result){
-                if(result.code == '0'){
-                    var index = layer.alert(result.msg, {
-                      skin: 'layui-layer-molv' //样式类名
-                      ,closeBtn: 0
+                if(typeof(result.errcode) != 'undefined'){
+                    var index = layer.alert(result.message, {
+                        closeBtn: 0
                     }, function(){
                         layer.close(index);
                     });
                 }else{
-                    //location.href = result.url;
+                    location.href = "/admin/index";
                 }
             });
 

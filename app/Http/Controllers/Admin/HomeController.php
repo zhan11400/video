@@ -8,7 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Admin\BaseController as Base;
 
-class IndexController extends Base
+class HomeController extends Base
 {
     /**
      * Display a listing of the resource.
@@ -17,6 +17,6 @@ class IndexController extends Base
      */
     public function index()
     {
-        return view('admin.index.index');
+        return view('admin.home.index');
     }
 }
