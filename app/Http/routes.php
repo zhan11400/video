@@ -21,9 +21,9 @@ Route::get('verify/captcha', 'VerifyController@captcha');
 //     return 'Hello World';
 // });
 Route::get('admin/login', 'Admin\LoginController@index');
-Route::post('/admin/verify_login', 'Admin\LoginController@verify_login');
+Route::post('admin/verify_login', 'Admin\LoginController@verify_login');
 
-
+Route::get('admin/index', 'Admin\IndexController@index');
 
 
 //PC首页

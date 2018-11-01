@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Admin;
 use App\Http\Controllers\VerifyController;   //验证码类
+use App\Http\Controllers\HashController;     //密码
 
 class LoginController extends Controller
 {
@@ -20,74 +21,24 @@ class LoginController extends Controller
         return view('admin.login.index');
     }
 
-    public function verify_login(){
+    public function verify_login(Request $request){
+        $hash = new HashController;
         $kit = new VerifyController();
-        var_dump($kit->check_verify('KLHQ2'));
-    }
+        $admin = new Admin();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+        //接收指定参数
+        $account = $request->input('account');
+        $password = $request->input('passwd');
+        $code = $request->input('code');
+        if(!$kit->check_verify($code))return $this->jsonResult(40101);
+        
+        if(empty($account) || empty($password))return $this->jsonResult(40401);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $result = $admin->find($account);
+        if(!empty($result)){
+            if(!$hash->UserPasswordCheck($password,$result['password']))return $this->jsonResult(40606);
+        }else{
+            return $this->jsonResult(40506);
+        }
     }
 }

@@ -13,7 +13,11 @@ class Admin extends Model
      */
     protected $table = 'admin';
 
-    public function find(){
-    	
+    public function find($account){
+    	if($this->where('account',$account)->first()){
+            return $this->where('account',$account)->first()->toArray();
+        }else{
+            return [];
+        }
     }
 }
