@@ -30,9 +30,8 @@
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="code"  placeholder="验证码" style="float:left;width: 60%">
-                    <img class="yzm" src="{{ URL::asset('verify/captcha') }}" style="width:38%;height:34px;padding-left: 2%">
+                    <img class="yzm" src="{{ URL::asset('verify/captcha') }}" style="width:38%;height:34px;padding-left: 2%;cursor: pointer;">
                 </div>
-                <img src="">
                 <button  onclick="ajax_post()" class="btn btn-primary block full-width m-b">登 录</button>
             <!-- </form> -->
         </div>
