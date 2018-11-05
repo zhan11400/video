@@ -11,7 +11,10 @@ use Session;
 class BaseController extends Controller
 {
     public function __construct(){
-    	//$milkcaptcha = Session::get('');
-    	
+    	$user_info = Session::get('user_info');
+
+    	if(empty($user_info)){
+    		die(redirect("/admin/login"));
+		}
     }
 }

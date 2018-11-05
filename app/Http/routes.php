@@ -17,6 +17,7 @@ Route::get('verify/captcha', 'VerifyController@captcha');
 
 //后台地址
 Route::get('admin/login', 'Admin\LoginController@index');
+Route::post('admin/up_login', 'Admin\LoginController@up_login');
 Route::post('admin/verify_login', 'Admin\LoginController@verify_login');
 
 Route::get('admin/index', 'Admin\IndexController@index');

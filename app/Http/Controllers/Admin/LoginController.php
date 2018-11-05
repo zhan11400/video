@@ -19,7 +19,10 @@ class LoginController extends Controller
      */
     public function index()
     {
-        
+        $user_info = Session::get('user_info');
+        if($user_info){
+            die(redirect("/admin/index"));
+        }
         return view('admin.login.index');
     }
 
@@ -39,10 +42,13 @@ class LoginController extends Controller
         $result = $admin->find($account);
         if(!empty($result)){
             if(!$hash->UserPasswordCheck($password,$result['password']))return $this->jsonResult(40606);
-
-            
+            Session::set('user_info',$result);
         }else{
             return $this->jsonResult(40506);
         }
+    }
+
+    public function up_login(){
+        Session::set('user_info',null);
     }
 }
