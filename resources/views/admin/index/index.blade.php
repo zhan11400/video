@@ -9,6 +9,7 @@
         @include('admin.public.right_head')
         <!--右侧部分结束-->
     </div>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- 全局js -->
     <script src="{{ URL::asset('admin/js/jquery.min.js?v=2.1.4') }}"></script>
@@ -23,6 +24,17 @@
 
     <!-- 刷新窗口 -->
     <script>
+        //全局样式
+        layer.config({
+            skin: 'layui-layer-molv'//自定义样式demo-class
+        })
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         //刷新iframe
         function reload(){
             var i = 0;
@@ -44,7 +56,7 @@
 
         function up_login(){
             $.ajax({
-              url:"{:url('Login/up_login')}",
+              url:"/admin/up_login",
               type:'POST',
               data:'',
               async:false,

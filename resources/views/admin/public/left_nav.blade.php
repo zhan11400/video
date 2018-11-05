@@ -7,7 +7,7 @@
       <li class="nav-header">
         <div class="dropdown profile-element">
           <span>
-            <img alt="image" class="img-circle" src="{$info.head_image}" width="100" height="100"/></span>
+            <img alt="image" class="img-circle" src="{{$user_info['head_image']}}" width="100" height="100"/></span>
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">
               <span class="block m-t-xs">
@@ -21,7 +21,7 @@
               <a class="J_menuItem" href="form_avatar.html">修改头像</a>
             </li> -->
             <li>
-              <a class="J_menuItem" href="{:url('Index/personal_center')}" onclick="close_center()">个人资料</a>
+              <a class="J_menuItem" href="/index/personal_center" onclick="close_center()">个人资料</a>
             </li>
 <!--             <li>
               <a class="J_menuItem" href="contacts.html">联系我们</a></li>
@@ -35,25 +35,25 @@
         <div class="logo-element">H+</div>
       </li>
       @foreach($nav as $v)
-      <li>
-        <a class="J_menuItem" href="{{$v['url']}}" >
-          <i class="fa {{$v['left_img']}}"></i>
-          <span class="nav-label">{{$v['name']}}</span>
-          @if (!empty($v['nav']))
-            <span class="fa arrow"></span>
+        <li>
+          <a class="J_menuItem" href="{{$v['url']}}" >
+            <i class="fa {{$v['left_img']}}"></i>
+            <span class="nav-label">{{$v['name']}}</span>
+            @if (!empty($v['nav']))
+              <span class="fa arrow"></span>
+            @endif
+          </a>
+          @if(!empty($v['nav']))
+            <ul class="nav nav-second-level">
+              @foreach ($v['nav'] as $vv)
+                <li>
+                  <a class="J_menuItem" href="{{ $vv['url'] }}">{{$vv['name']}}</a>
+                </li>
+              @endforeach
+            </ul>
           @endif
-        </a>
-        @if(!empty($v['nav']))
-          <ul class="nav nav-second-level">
-            @foreach ($v['nav'] as $vv)
-              <li>
-                <a class="J_menuItem" href="{{ $vv['url'] }}">{{$vv['name']}}</a>
-              </li>
-            @endforeach
-          </ul>
-        @endif
-     </li>
-    @endforeach
+       </li>
+      @endforeach
     </ul>
   </div>
 </nav>

@@ -20,4 +20,13 @@ class IndexController extends Base
     	$nav=config('nav');
         return view('admin.index.index',['nav'=>$nav]);
     }
+
+    /**
+    * 个人中心
+    */
+    public function personal_center()
+    {
+        die('123');
+        
+    }
 }

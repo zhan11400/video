@@ -16,5 +16,7 @@ class BaseController extends Controller
     	if(empty($user_info)){
     		die(redirect("/admin/login"));
 		}
+
+		view()->share('user_info', $user_info);
     }
 }
