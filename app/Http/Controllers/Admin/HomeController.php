@@ -30,11 +30,11 @@ class HomeController extends Base
         $sys_info['max_ex_time'] 	= @ini_get("max_execution_time").'s'; //脚本最大执行时间
         $sys_info['set_time_limit'] = function_exists("set_time_limit") ? true : false;
         $sys_info['domain'] 		= $_SERVER['HTTP_HOST'];
-        $sys_info['domain']			= $sys_info['domain'][$sys_info['ip']];
         $sys_info['memory_limit']   = ini_get('memory_limit');
         $sys_info['version']   	    = 1;
-        $mysqlinfo = DB::query("SELECT VERSION() as version");
-        $sys_info['mysql_version']  = $mysqlinfo[0]['version'];
+        $mysqlinfo = DB::selectOne("select VERSION() as version");
+        $sys_info['mysql_version']  = $mysqlinfo->version;
+        
         if(function_exists("gd_info")){
             $gd = gd_info();
             $sys_info['gdinfo'] 	= $gd['GD Version'];
