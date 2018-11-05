@@ -10,20 +10,17 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
 Route::get('/', 'Admin\LoginController@index');
 
 //验证码
 Route::get('verify/captcha', 'VerifyController@captcha');
 
 //后台地址
-// Route::match(['get', 'post'], '/', function () {
-//     return 'Hello World';
-// });
 Route::get('admin/login', 'Admin\LoginController@index');
 Route::post('admin/verify_login', 'Admin\LoginController@verify_login');
 
 Route::get('admin/index', 'Admin\IndexController@index');
+Route::get('home/index', 'Admin\HomeController@index');
 
 
 //PC首页
