@@ -1,4 +1,4 @@
-{include file="public_iframe:head"}
+@include('public_iframe.head')
 <body class="gray-bg">
   <div class="wrapper wrapper-content">
     <div class="row">
@@ -10,9 +10,9 @@
                 <tbody>
                   <tr>
                     <td>服务器操作系统：</td>
-                    <td>{$sys_info.os}</td>
+                    <td>{{$sys_info['os']}}</td>
                     <td>服务器域名/IP：</td>
-                    <td>{$sys_info.domain} [ {$sys_info.ip} ]</td>
+                    <td>{{$sys_info['domain']}}</td>
                     <td>服务器环境：</td>
                     <td>{$sys_info.web_server}</td></tr>
                   <tr>

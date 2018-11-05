@@ -13,10 +13,4 @@
     <link href="{{ URL::asset('admin/css/font-awesome.min.css?v=4.4.0') }}" rel="stylesheet">
     <link href="{{ URL::asset('admin/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('admin/css/style.css?v=4.1.0') }}" rel="stylesheet">
-    <script src="{{ URL::asset('admin/js/jquery.min.js?v=2.1.4') }}"></script>
-    <script src="{{ URL::asset('admin/js/layer/layer.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
-    <script src="{{ URL::asset('admin/js/hplus.js?v=4.1.0') }}"></script>
-    <script src="{{ URL::asset('admin/js/contabs.js') }}"></script>
 </head>

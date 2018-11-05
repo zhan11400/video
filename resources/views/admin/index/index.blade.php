@@ -1,14 +1,25 @@
-{include file="public:head"}
+@include('admin.public.head')
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
         <!--左侧导航开始-->
-        {include file="public:left_nav"}
+        @include('admin.public.left_nav')
         <!--左侧导航结束-->
         
         <!--右侧部分开始-->
-        {include file="public:right_head"}
+        @include('admin.public.right_head')
         <!--右侧部分结束-->
     </div>
+
+    <!-- 全局js -->
+    <script src="{{ URL::asset('admin/js/jquery.min.js?v=2.1.4') }}"></script>
+    <script src="{{ URL::asset('admin/js/bootstrap.min.js?v=3.3.6') }}"></script>
+    <script src="{{ URL::asset('admin/js/layer/layer.js') }}"></script>
+    <script src="{{ URL::asset('admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    <script src="{{ URL::asset('admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ URL::asset('admin/js/plugins/layer/layer.min.js') }}"></script>
+    
+    <script src="{{ URL::asset('admin/js/hplus.js?v=4.1.0') }}"></script>
+    <script src="{{ URL::asset('admin/js/contabs.js') }}"></script>
 
     <!-- 刷新窗口 -->
     <script>
@@ -41,7 +52,7 @@
               contentType:false,
               success:function(result) {
                   var index = parent.layer.alert('欢迎在使用!', {
-                    ,closeBtn: 0
+                    closeBtn: 0
                   }, function(){
                       window.location.reload();
                   });

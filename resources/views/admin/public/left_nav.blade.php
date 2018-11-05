@@ -11,7 +11,7 @@
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">
               <span class="block m-t-xs">
-                <strong class="font-bold">{$info.account}</strong></span>
+                <strong class="font-bold"></strong></span>
               <span class="text-muted text-xs block" style="padding-top: 10px;">超级管理员
                 <b class="caret"></b></span>
             </span>
@@ -34,26 +34,26 @@
         </div>
         <div class="logo-element">H+</div>
       </li>
-      {volist name="left_nav" id="v"}
-        <li>
-          <a class="J_menuItem" href="{$v.url}" >
-            <i class="fa {$v.left_img}"></i>
-            <span class="nav-label">{$v.name}</span>
-            {if condition="!empty($v.nav)"}
+      @foreach($nav as $v)
+      <li>
+        <a class="J_menuItem" href="{{$v['url']}}" >
+          <i class="fa {{$v['left_img']}}"></i>
+          <span class="nav-label">{{$v['name']}}</span>
+          @if (!empty($v['nav']))
             <span class="fa arrow"></span>
-            {/if}
-          </a>
-          {if condition="!empty($v.nav)"}
+          @endif
+        </a>
+        @if(!empty($v['nav']))
           <ul class="nav nav-second-level">
-            {volist name="v.nav" id="vo"}
-            <li>
-              <a class="J_menuItem" href="{$vo.url}">{$vo.name}</a>
-            </li>
-            {/volist}
+            @foreach ($v['nav'] as $vv)
+              <li>
+                <a class="J_menuItem" href="{{ $vv['url'] }}">{{$vv['name']}}</a>
+              </li>
+            @endforeach
           </ul>
-          {/if}
-        </li>
-      {/volist}
+        @endif
+     </li>
+    @endforeach
     </ul>
   </div>
 </nav>
