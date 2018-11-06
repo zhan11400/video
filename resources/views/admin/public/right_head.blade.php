@@ -26,6 +26,7 @@
         <i class="fa fa-repeat"></i>
       </button>
     </nav>
+
     <div class="btn-group roll-nav roll-right">
       <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作
         <span class="caret"></span></button>
@@ -48,7 +49,7 @@
   </div>
 
   <div class="row J_mainContent" id="content-main">
-    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/home/index" frameborder="0" seamless></iframe>
+    <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/home/index" frameborder="0" data-id="index_v1.html" seamless></iframe>
   </div>
 
 </div>
