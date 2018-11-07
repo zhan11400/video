@@ -24,6 +24,8 @@ class Admin extends Model
 
     public function update_compile(array $data,$whereid)
     {
-        $this->where('id',$whereid)->update($data);
+        $result=$this->where('id',$whereid)->update($data);
+        if(!$result)return false;
+        return true;
     }
 }

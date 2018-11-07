@@ -27,35 +27,36 @@ class IndexController extends Base
     */
     public function personal_center(Request $request)
     {
-        var_dump($this->isAjax());die;
-        if(true){
-            // $account = $request->input('account');
-            // $passwd = $request->input('passwd');
+        $admin = new Admin();
+        if($this->isAjax()){
+            $account = $request->input('account');
+            $passwd = $request->input('passwd');
 
-            // if(!empty($account)){
-            //     $data['account'] = $account;
-            // }
+            if(!empty($account)){
+                $data['account'] = $account;
+            }
 
-            // if(!empty($passwd)){
-            //     $hash = new HashController;
-            //     $passwd = $hash->UserPassword($passwd);
-            //     $data['password'] = $passwd;
-            // }
+            if(!empty($passwd)){
+                $hash = new HashController;
+                $passwd = $hash->UserPassword($passwd);
+                $data['password'] = $passwd;
+            }
 
-            // $image = new ImagesController;
-            // $image_result = $image->upload('image','upload/images');
-            // if(!empty($image_result)){
-            //     $image_result = implode("", $image_result);
-            //     $data['head_image'] = $image_result;
-            // }
+            $image = new ImagesController;
+            $image_result = $image->upload('image','upload/images');
+            if(!empty($image_result)){
+                $image_result = implode("", $image_result);
+                $data['head_image'] = $image_result;
+            }
             
+            $data['logintime'] = time();
+            $data['ip'] = $_SERVER['REMOTE_ADDR'];
 
-            // $result = db('admin')->where(['id'=>$this->info['id']])->update($data);
-            // if(!$result)return $this->error('修改失败!');
-            // $this->success('修改成功');
+            $result = $admin->update_compile($data,$this->user_info['ID']);
+            if(!$result)$this->jsonResult(60009);
+            die;
         }
 
-        $admin = new Admin();
         $info = $admin->find($this->user_info['account']);
         $info['logintime'] = date('Y-m-d H:i:s', $info['logintime']);
         return view('admin.index.personal_center',['info'=>$info]);
