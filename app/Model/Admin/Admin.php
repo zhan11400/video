@@ -12,6 +12,7 @@ class Admin extends Model
      * @var string
      */
     protected $table = 'admin';
+    public $timestamps = false;
 
     public function find($account){
     	if($this->where('account',$account)->first()){
@@ -19,5 +20,10 @@ class Admin extends Model
         }else{
             return [];
         }
+    }
+
+    public function update_compile(array $data,$whereid)
+    {
+        $this->where('id',$whereid)->update($data);
     }
 }

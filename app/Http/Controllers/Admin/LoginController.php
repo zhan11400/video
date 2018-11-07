@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
@@ -42,6 +41,11 @@ class LoginController extends Controller
         $result = $admin->find($account);
         if(!empty($result)){
             if(!$hash->UserPasswordCheck($password,$result['password']))return $this->jsonResult(40606);
+
+            $update['logintime'] = time();
+            $update['ip'] = $_SERVER['REMOTE_ADDR'];
+
+            $admin->update_compile($update,$result['id']);
             Session::set('user_info',$result);
         }else{
             return $this->jsonResult(40506);
