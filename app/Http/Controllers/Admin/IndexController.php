@@ -16,7 +16,7 @@ class IndexController extends Base
     public function index()
     {
     	$nav=config('nav');
-        return view('admin.index.index',['nav'=>$nav]);
+        return view('admin.index.index',['nav'=>$nav['Admin']]);
     }
 
     /**
