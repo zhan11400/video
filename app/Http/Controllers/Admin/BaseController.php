@@ -28,24 +28,6 @@ class BaseController extends Controller
     }
 
     /**
-     * 判断是否是POST请求
-     * @return bool
-     */
-    protected function isPost()
-    {
-        return strcasecmp($this->request->getMethod(),'post') === 0;
-    }
-
-    /**
-     * 判断是否是GET请求
-     * @return bool
-     */
-    protected function isGet()
-    {
-        return strcasecmp($this->request->getMethod(),'get') === 0;
-    }
-
-    /**
      * 判断是否是ajax请求
      * @return bool
      */
