@@ -3,8 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\ImagesController;     //上传图片
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Admin;
 use Session;

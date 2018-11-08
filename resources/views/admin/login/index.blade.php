@@ -70,7 +70,7 @@
             return false;
         }
 
-
+        //刷新验证码
         $(".yzm").click(function(){
             if( $(this).attr("src").indexOf('?')>0){
                 $(this).attr("src", $(this).attr("src")+'&random='+Math.random());

@@ -66,7 +66,7 @@
                   var index = parent.layer.alert('欢迎在使用!', {
                     closeBtn: 0
                   }, function(){
-                      window.location.reload();
+                      location.href = '/admin/login';
                   });
               }
           });

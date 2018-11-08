@@ -10,4 +10,25 @@
     <link href="{{ URL::asset('admin/css/font-awesome.css?v=4.4.0') }}" rel="stylesheet">
     <link href="{{ URL::asset('admin/css/animate.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('admin/css/style.css?v=4.1.0') }}" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+    	$.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+        //统一返回参数
+        function ajax_result(message,url){
+            var index = parent.layer.alert(message, {
+              closeBtn: 0
+            }, function(){
+              if(typeof(url) == 'undefined'){
+                parent.layer.close(index);
+              }else{
+                location.href = url;
+              }
+            });
+        }
+    </script>
 </head>

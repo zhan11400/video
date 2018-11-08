@@ -24,8 +24,7 @@ Route::get('admin/index', 'Admin\IndexController@index');
 Route::get('home/index', 'Admin\HomeController@index');
 
 //个人中心
-Route::get('index/personal_center', 'Admin\IndexController@personal_center');
-
+Route::match(['get','post'],'index/personal_center', 'Admin\IndexController@personal_center');
 
 //PC首页
 Route::get('pc/index', 'Pc\IndexController@index');

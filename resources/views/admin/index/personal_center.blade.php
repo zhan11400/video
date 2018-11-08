@@ -97,28 +97,17 @@
 
 
             $.ajax({
-              url:"{:url('Index/personal_center')}",
+              url:'/index/personal_center',
               type:'POST',
               data:formData,
               async:false,
               processData:false,
               contentType:false,
               success:function(result) {
-                  if(result.code == '0'){
-                      var index = parent.layer.alert(result.msg, {
-                        skin: 'layui-layer-molv' //样式类名
-                        ,closeBtn: 0
-                      }, function(){
-                          parent.layer.close(index);
-                      });
+                  if(typeof(result.errcode) != 'undefined'){
+                      ajax_result(result.message);
                   }else{
-                      var index = parent.layer.alert(result.msg, {
-                        skin: 'layui-layer-molv' //样式类名
-                        ,closeBtn: 0
-                      }, function(){
-                          location.href = result.url;
-                          parent.layer.close(index);
-                      });
+                      ajax_result('修改成功');
                   }
               }
             });

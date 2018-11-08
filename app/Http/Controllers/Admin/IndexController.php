@@ -1,12 +1,9 @@
 <?php
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\HashController;     //密码
-use App\Http\Controllers\ImagesController;     //上传图片
 use App\Http\Controllers\Admin\BaseController as Base;
+use App\Http\Controllers\HashController;                    //密码
+use App\Http\Controllers\ImagesController;                  //上传图片
 use App\Model\Admin\Admin;
 
 class IndexController extends Base
@@ -25,13 +22,13 @@ class IndexController extends Base
     /**
     * 个人中心
     */
-    public function personal_center(Request $request)
+    public function personal_center()
     {
         $admin = new Admin();
         if($this->isAjax()){
-            $account = $request->input('account');
-            $passwd = $request->input('passwd');
-
+            $account = $this->request->input('account');
+            $passwd = $this->request->input('passwd');
+            var_dump($account);die;
             if(!empty($account)){
                 $data['account'] = $account;
             }
@@ -43,7 +40,8 @@ class IndexController extends Base
             }
 
             $image = new ImagesController;
-            $image_result = $image->upload('image','upload/images');
+            $image_result = $image->upload('upload/images');
+            var_dump($image_result);die;
             if(!empty($image_result)){
                 $image_result = implode("", $image_result);
                 $data['head_image'] = $image_result;
@@ -52,7 +50,7 @@ class IndexController extends Base
             $data['logintime'] = time();
             $data['ip'] = $_SERVER['REMOTE_ADDR'];
 
-            $result = $admin->update_compile($data,$this->user_info['ID']);
+            $result = $admin->update_compile($data,$this->user_info['id']);
             if(!$result)$this->jsonResult(60009);
             die;
         }
