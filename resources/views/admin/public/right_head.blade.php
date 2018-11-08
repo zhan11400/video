@@ -22,14 +22,18 @@
       <div class="page-tabs-content">
         <a href="javascript:;" class="active J_menuTab" data-id="index_v1.html">首页</a>
       </div>
-      <button class="roll-nav roll-right J_tabRight" onclick="reload()">
+      <!-- <button class="roll-nav roll-right J_tabRight" style="right:180px" onclick="iframe_operate('reply')">
+        <i class="fa fa-reply"></i>
+      </button> -->
+      <button class="roll-nav roll-right J_tabRight" onclick="iframe_operate('repeat')">
         <i class="fa fa-repeat"></i>
       </button>
     </nav>
 
     <div class="btn-group roll-nav roll-right">
       <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作
-        <span class="caret"></span></button>
+        <span class="caret"></span>
+      </button>
       <ul role="menu" class="dropdown-menu dropdown-menu-right">
         <li class="J_tabShowActive">
           <a>定位当前选项卡</a>

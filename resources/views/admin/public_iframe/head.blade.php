@@ -30,5 +30,11 @@
               }
             });
         }
+
+        //返回上一页
+        $('.fa-reply', window.parent.document).on('click',function(){
+            history.go(-1)
+        });
+
     </script>
 </head>

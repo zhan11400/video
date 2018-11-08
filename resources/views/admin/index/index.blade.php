@@ -36,16 +36,25 @@
         });
 
         //刷新iframe
-        function reload(){
-            var i = 0;
-            $('.J_menuTabs').find('.page-tabs-content a').each(function(){
-                if($(this).hasClass('active')){
-                  return false;
-                }else{
-                  i++;
-                }
-            });
-            $('.J_iframe').eq(i).attr('src', $('.J_iframe').eq(i).attr('src'));
+        function iframe_operate($type){
+          var i = 0;
+          $('.J_menuTabs').find('.page-tabs-content a').each(function(){
+              if($(this).hasClass('active')){
+                return false;
+              }else{
+                i++;
+              }
+          });
+
+          switch($type){
+            case 'repeat':
+              $('.J_iframe').eq(i).attr('src', $('.J_iframe').eq(i).attr('src'));
+              break;
+            case 'reply':
+              if(i == 0)return false;
+              $('.J_iframe').eq(i).click();
+              break;
+          }
         }
 
         //关闭个人中心
