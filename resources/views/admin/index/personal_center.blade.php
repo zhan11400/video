@@ -23,7 +23,7 @@
                 <div class="form-group">
                   <label class="col-sm-2 control-label">账号</label>
                   <div class="col-sm-10">
-                    <input type="text" name="account" class="form-control" value="{{$info['account']}}">
+                    <input type="text" name="account" class="form-control" value="{{$info['account']}}" disabled>
                   </div>
                 </div>
                 <div class="hr-line-dashed"></div>
@@ -107,7 +107,7 @@
                   if(typeof(result.errcode) != 'undefined'){
                       ajax_result(result.message);
                   }else{
-                      ajax_result('修改成功');
+                      ajax_result('修改成功','/index/personal_center');
                   }
               }
             });

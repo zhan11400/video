@@ -27,6 +27,7 @@
                 parent.layer.close(index);
               }else{
                 location.href = url;
+                parent.layer.close(index);
               }
             });
         }

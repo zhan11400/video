@@ -12,7 +12,7 @@
             <span class="clear">
               <span class="block m-t-xs">
                 <strong class="font-bold"></strong></span>
-              <span class="text-muted text-xs block" style="padding-top: 10px;">超级管理员
+              <span class="text-muted text-xs block" style="padding-top: 10px;">{{$user_info['account']}}
                 <b class="caret"></b></span>
             </span>
           </a>

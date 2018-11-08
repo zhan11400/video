@@ -60,13 +60,13 @@ class BaseController extends Controller
     */
     protected function upload_img($file,$upload_path='upload/admin/'){
         if($this->request->hasFile($file)){
-            $file = $this->request->file($file);               //1、使用laravel 自带的request类来获取一下文件
-            $exe = $file->getClientOriginalExtension();        //获取文件后缀     
+            $files = $this->request->file($file);               //1、使用laravel 自带的request类来获取一下文件
+            $exe = $files->getClientOriginalExtension();        //获取文件后缀     
             if(in_array($exe, ['jpg','png','jpeg'])){
                 $fileName = uniqid().'.'.$exe;
-                $file->move($upload_path,$fileName);
+                $bool = $files->move($upload_path,$fileName);
 
-                return $upload_path.$fileName;
+                return '/'.$upload_path.$fileName;
             }
         }
 
