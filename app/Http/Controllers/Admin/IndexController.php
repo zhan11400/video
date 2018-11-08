@@ -40,9 +40,8 @@ class IndexController extends Base
             }
 
             $image_result = $this->upload_img('image');
-            var_dump($image_result);die;
+
             if(!empty($image_result)){
-                $image_result = implode("", $image_result);
                 $data['head_image'] = $image_result;
             }
             

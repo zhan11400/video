@@ -58,17 +58,16 @@ class BaseController extends Controller
     * 上传图片方法
     *
     */
-    protected function upload_img($file,$upload_path='upload/admin'){
-        $var = $request->has($file);
-        var_dump($var);die;
-        $images=Request::file($file); //1、使用laravel 自带的request类来获取一下文件
-        
-        if($images){
-            $imagesName=$images->getClientOriginalName(); //3、获取上传图片的文件名
-            $extension=$images->getClientOriginalExtension(); //4、获取上传图片的后缀名
-            $newImagesName=md5(time()).random_int(5,5).".".$extension;//5、重新命名上传文件名字
-            $images->move($upload_path,$newImagesName); //6、使用move方法移动文件.
-            return [$upload_path,$newImagesName];
+    protected function upload_img($file,$upload_path='upload/admin/'){
+        if($this->request->hasFile($file)){
+            $file = $this->request->file($file);               //1、使用laravel 自带的request类来获取一下文件
+            $exe = $file->getClientOriginalExtension();        //获取文件后缀     
+            if(in_array($exe, ['jpg','png','jpeg'])){
+                $fileName = uniqid().'.'.$exe;
+                $file->move($upload_path,$fileName);
+
+                return $upload_path.$fileName;
+            }
         }
 
         return null;
