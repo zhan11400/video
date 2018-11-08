@@ -28,7 +28,7 @@ class IndexController extends Base
         if($this->isAjax()){
             $account = $this->request->input('account');
             $passwd = $this->request->input('passwd');
-            var_dump($account);die;
+            
             if(!empty($account)){
                 $data['account'] = $account;
             }
@@ -39,8 +39,7 @@ class IndexController extends Base
                 $data['password'] = $passwd;
             }
 
-            $image = new ImagesController;
-            $image_result = $image->upload('upload/images');
+            $image_result = $this->upload_img('image');
             var_dump($image_result);die;
             if(!empty($image_result)){
                 $image_result = implode("", $image_result);
